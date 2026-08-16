@@ -1,6 +1,6 @@
-import React from "react";
+import React,{useState} from "react";
 import {createRoot} from "react-dom/client";
-import {ArrowUpRight, Github, Linkedin, Mail, Download, Code2, Cloud, Sparkles, MapPin} from "lucide-react";
+import {ArrowUpRight, Github, Linkedin, Mail, Download, Code2, Cloud, Sparkles, MapPin, Menu, X} from "lucide-react";
 import "./styles.css";
 
 const stats=[{value:"2.5+",label:"years of experience"},{value:"75+",label:"production REST APIs"},{value:"97%",label:"backend test coverage"},{value:"3",label:"enterprise domains"}];
@@ -21,8 +21,9 @@ const skills={"Backend":["Node.js","Fastify","TypeScript","Python","Django","Dja
 const Chips=({items})=><div className="chips">{items.map(x=><span key={x}>{x}</span>)}</div>;
 
 function App(){
+const [menuOpen,setMenuOpen]=useState(false);
 return <div className="app">
-<header className="nav"><a className="brand" href="#top">AK<span>.</span></a><nav><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav><a className="nav-cta" href="mailto:averma.sre@gmail.com">Let's talk <ArrowUpRight size={16}/></a></header>
+<header className="nav"><a className="brand" href="#top">AK<span>.</span></a><nav className={menuOpen?"is-open":""} onClick={()=>setMenuOpen(false)}><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav><a className="nav-cta" href="mailto:averma.sre@gmail.com">Let's talk <ArrowUpRight size={16}/></a><button className="menu-toggle" type="button" aria-label={menuOpen?"Close navigation menu":"Open navigation menu"} aria-expanded={menuOpen} onClick={()=>setMenuOpen(!menuOpen)}>{menuOpen?<X size={21}/>:<Menu size={22}/>}</button></header>
 <main id="top">
 <section className="hero section"><div className="hero-copy"><div className="eyebrow"><span/>Backend-focused Full Stack Developer</div><h1>Building reliable<br/><em>software systems.</em></h1><p className="hero-text">I'm Aakash Kumar, a software developer with 2.5+ years of professional experience building backend-heavy full-stack applications with Node.js, TypeScript, Python, Java, React and PostgreSQL — currently shipping an airline crew bidding platform for Scandinavian Airlines.</p><div className="hero-actions"><a className="primary-btn" href="#projects">Explore my work <ArrowUpRight size={18}/></a><a className="secondary-btn" href="/Aakash_Kumar_Resume.pdf" download="Aakash_Kumar_Resume.pdf"><Download size={17}/> Resume</a></div><div className="socials"><a href="https://www.linkedin.com/in/avermasre" target="_blank" rel="noreferrer"><Linkedin size={18}/>LinkedIn</a><a href="https://github.com/averma0001" target="_blank" rel="noreferrer"><Github size={18}/>GitHub</a><a href="https://leetcode.com/avermasre" target="_blank" rel="noreferrer"><Code2 size={18}/>LeetCode</a></div></div>
 <div className="hero-visual"><div className="glow"/><div className="code-card"><div className="code-top"><span/><span/><span/><small>backend.ts</small></div><pre>{`const developer = {
