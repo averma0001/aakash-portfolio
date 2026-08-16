@@ -1,0 +1,10 @@
+node_modules
+dist
+.vite
+.pnp.*
+.yarn/*
+!.yarn/patches
+.env
+.env.local
+.DS_Store
+*.log
